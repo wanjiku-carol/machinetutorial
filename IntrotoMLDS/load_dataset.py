@@ -3,15 +3,7 @@ import numpy as np
 from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
 from sklearn import model_selection
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import SVC
+
 
 filepath = './Iris_Data.csv'
 names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
@@ -59,27 +51,3 @@ plt.show()
 # This can be helpful to spot structured relationships between input variables.
 scatter_matrix(dataset)
 plt.show()
-
-# EVALUATE SOME ALGORITHMS
-# Here is what we are going to cover in this step:
-
-# Separate out a validation dataset.
-# Set-up the test harness to use 10-fold cross validation.
-# Build 5 different models to predict species from flower measurements
-# Select the best model.
-#  1.  Create a Validation Dataset
-# We will split the loaded dataset into two, 80% of which we will use 
-# to train our models and 20% that we will hold back as a validation dataset.
-array = dataset.values
-X = array[:,0:4]
-Y = array[:,4]
-validation_size = 0.20
-seed = 7
-X_train, X_validation, Y_train, Y_validation, = model_selection.train_test_split(
-  X, Y, test_size=validation_size, random_state=seed
-)
-# You now have training data in the X_train and Y_train for preparing models 
-# and a X_validation and Y_validation sets that we can use later.
-# 2. Test harness
-
-
